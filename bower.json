@@ -1,0 +1,23 @@
+{
+  "name": "vue-svg-arc-animation",
+  "main": "dist/svg-arc-animation.js",
+  "description": "Animate SVG using d3.js",
+  "authors": "Iskandar Jamil <iskandar.jam@gmail.com>",
+  "license": "MIT",
+  "ignore": [
+    "examples",
+    "config",
+    "grunt",
+    "build",
+    "docs",
+    "test",
+    ".gitignore",
+    ".eslintrc",
+    ".babelrc",
+    "Gruntfile.js",
+    "*.json",
+    "*.md",
+    "*.yml",
+    "*.lock"
+  ]
+}

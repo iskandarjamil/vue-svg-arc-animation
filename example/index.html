@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1,width=device-width,initial-scale=1,user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <title>SVG Arc Animation</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+  <style>
+  *{box-sizing: border-box;}
+  html, body { margin:0; padding:0;font-family: "lato", sans-serif;}
+  body{ height: 100vh; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+  #main{ height: 100vh; width: 100%; position: relative; display: flex; justify-content: center; align-items: center; align-content: center; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <svg-arc-animation :value="300" :total="1000" :size="80" :delay="0" :duration="2000" :color="'orange'"></svg-arc-animation>
+    <svg-arc-animation :value="700" :total="1000" :size="100" :delay="200" :duration="2000" :color="'red'"></svg-arc-animation>
+    <svg-arc-animation :value="500" :total="1000" :size="80" :delay="400" :duration="2000" :color="'blue'" :direction="'rtl'"></svg-arc-animation>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="../dist/svg-arc-animation.js"></script>
+  <script>
+    var app = new Vue({
+      el : '#main',
+    });
+  </script>
+</body>
+</html>

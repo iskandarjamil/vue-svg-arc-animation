@@ -1,0 +1,14 @@
+/vendor
+/node_modules
+/bower_components
+/assets
+/public/hot
+/public/storage
+/.idea
+/.vagrant
+.sass-cache/
+.DS_Store
+.env
+npm-debug.log
+yarn-error.log
+composer.lock
