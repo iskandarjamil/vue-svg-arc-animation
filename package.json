@@ -2,7 +2,6 @@
   "name": "vue-svg-arc-animation",
   "version": "0.0.1",
   "description": "Animate SVG using d3.js",
-  "private": true,
   "main": "./src/svg-arc-animation.js",
   "scripts": {
     "serve": "set NODE_ENV =development && grunt connect:server:keepalive",

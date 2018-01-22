@@ -24,8 +24,8 @@ $ bower install vue-svg-arc-animation --save
 ```html
 <body>
   <div id="main">
-    <svg-arc-animation :value="300" :total="1000" :size="80" :delay="0" :duration="2000" :color="'orange'"></svg-arc-animation>
-    <svg-arc-animation :value="700" :total="1000" :size="100" :delay="200" :duration="2000" :color="'red'"></svg-arc-animation>
+    <svg-arc-animation :value="300" :total="1000"></svg-arc-animation>
+    <svg-arc-animation :value="700" :total="1000" :size="100" :delay="200" :duration="2000" :color="'orange'"></svg-arc-animation>
     <svg-arc-animation :value="500" :total="1000" :size="80" :delay="400" :duration="2000" :color="'blue'" :direction="'rtl'"></svg-arc-animation>
   </div>
 
@@ -43,9 +43,6 @@ $ bower install vue-svg-arc-animation --save
 or
 
 ```html
-<script>
-
-</script>
 <body>
   <div id="main"></div>
 
@@ -60,12 +57,12 @@ or
       el: '#main',
       template: `
         <div>
-          <svg-arc-animation :value="300" :total="1000" :size="80" :delay="0" :duration="2000" :color="'orange'"></svg-arc-animation>
-          <svg-arc-animation :value="700" :total="1000" :size="100" :delay="200" :duration="2000" :color="'red'"></svg-arc-animation>
+          <svg-arc-animation :value="300" :total="1000"></svg-arc-animation>
+          <svg-arc-animation :value="700" :total="1000" :size="100" :delay="200" :duration="2000" :color="'orange'"></svg-arc-animation>
           <svg-arc-animation :value="500" :total="1000" :size="80" :delay="400" :duration="2000" :color="'blue'" :direction="'rtl'"></svg-arc-animation>
         </div>
       `,
-    })
+    });
   </script>
 </body>
 ```
