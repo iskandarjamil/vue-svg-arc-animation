@@ -2,7 +2,7 @@
 Built with [Vue.js](https://vuejs.org) and [D3](https://d3js.org/). Developed by [iskandarjamil](http://iskandarjamil.com).
 
 <p align="center">
-  <img src="https://github.com/iskandarjamil/vue.svg-arc-animation.plugin/images/preview.gif" align="center" width="708"/>
+  <img src="https://raw.githubusercontent.com/iskandarjamil/vue.svg-arc-animation.plugin/master/images/preview.gif" align="center" width="708"/>
 </p>
 
 ## Demo
