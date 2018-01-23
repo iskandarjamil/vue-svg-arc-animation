@@ -23,7 +23,7 @@ var SvgArcAnimationComponent = {
               color: vm.color,
               fontSize: (vm.boxSize / 12 * 0.2) + 'em',
               fontWeight: 'bold',
-            }}>{ vm.fgTxt }</div>
+            }}>{ vm.fgTxt }{vm.textOffset}</div>
           </div>
         </foreignObject>
         <g transform={ 'translate('+ vm.boxSize / 2 +','+ vm.boxSize / 2 +')' }>
@@ -62,6 +62,10 @@ var SvgArcAnimationComponent = {
       type: Number,
       default: 1000
     },
+    textOffset: {
+      type: String,
+      default: ''
+    },
     size: {
       type: Number,
       default: 75
@@ -93,6 +97,10 @@ var SvgArcAnimationComponent = {
     fgBorder: {
       type: Number,
       default: 8,
+    },
+    start: {
+      type: Boolean,
+      default: true,
     },
   },
   data () {
@@ -126,10 +134,35 @@ var SvgArcAnimationComponent = {
   methods: {
     init () {
       var vm = this;
-      Vue.nextTick(() => {
-        setTimeout(() => {
-          vm.animateDraw();
-        }, vm.delay);
+
+      if(this.start){
+        Vue.nextTick(() => {
+          setTimeout(() => {
+            vm.animateDraw();
+          }, vm.delay);
+        });
+      }
+
+      /**
+       * Animate All SVG
+       */
+      this.$parent.$on('animate', () => {
+        Vue.nextTick(() => {
+          setTimeout(() => {
+            vm.animateDraw();
+          }, vm.delay);
+        });
+      });
+
+      /**
+       * Animate single/target SVG
+       */
+      this.$on('animate', () => {
+        Vue.nextTick(() => {
+          setTimeout(() => {
+            vm.animateDraw();
+          }, vm.delay);
+        });
       });
     },
     animateDraw () {
@@ -187,7 +220,7 @@ var SvgArcAnimationComponent = {
   },
   mounted () {
     this.init();
-  }
+  },
 };
 
 

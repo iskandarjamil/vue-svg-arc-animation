@@ -15,9 +15,10 @@
 </head>
 <body>
   <div id="main">
+    <svg-arc-animation :text-offset="'%'" :value="30" :total="100" :size="80" :duration="2000" :color="'#b2b2b2'"></svg-arc-animation>
     <svg-arc-animation :value="300" :total="1000" :size="80" :delay="0" :duration="2000" :color="'orange'"></svg-arc-animation>
     <svg-arc-animation :value="700" :total="1000" :size="100" :delay="200" :duration="2000" :color="'red'"></svg-arc-animation>
-    <svg-arc-animation :value="500" :total="1000" :size="80" :delay="400" :duration="2000" :color="'blue'" :direction="'rtl'"></svg-arc-animation>
+    <svg-arc-animation :value="500" :total="1000" :size="80" :delay="400" :duration="2000" :color="'blue'" :direction="'rtl'" :start="false" ref="svg-4"></svg-arc-animation>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
@@ -26,6 +27,24 @@
   <script>
     var app = new Vue({
       el : '#main',
+      data: function() {
+        return {
+          animate : true
+        };
+      },
+      mounted: function() {
+        var vm = this;
+
+        setTimeout(function(){
+          // Animate single element
+          vm.$refs['svg-4'].$emit('animate');
+        }, 2000);
+
+        setTimeout(function(){
+          // Animate all elements
+          vm.$emit('animate');
+        }, 5000);
+      }
     });
   </script>
 </body>

@@ -7,6 +7,6 @@ module.exports = {
 
 	source_main: {
     files: [ 'src/*.js', 'src/*.vue' ],
-    tasks: [ 'concurrent:devJS' ]
+    tasks: [ 'dev' ]
   },
 };

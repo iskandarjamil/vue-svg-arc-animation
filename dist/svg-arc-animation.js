@@ -1,5 +1,5 @@
 /*!
-* svg-arc-animation v1.0.0
+* vue-svg-arc-animation v0.0.1
 * Copyright 2018 Iskandar Jamil <iskandar.jamil@vltkl.com>
 */
 
@@ -49,7 +49,7 @@ var SvgArcAnimationComponent = {
                 fontSize: vm.boxSize / 12 * 0.2 + 'em',
                 fontWeight: 'bold'
               } },
-            [vm.fgTxt]
+            [vm.fgTxt, vm.textOffset]
           )]
         )]
       ), h(
@@ -101,6 +101,10 @@ var SvgArcAnimationComponent = {
       type: Number,
       default: 1000
     },
+    textOffset: {
+      type: String,
+      default: ''
+    },
     size: {
       type: Number,
       default: 75
@@ -132,6 +136,10 @@ var SvgArcAnimationComponent = {
     fgBorder: {
       type: Number,
       default: 8
+    },
+    start: {
+      type: Boolean,
+      default: true
     }
   },
   data: function data() {
@@ -166,10 +174,35 @@ var SvgArcAnimationComponent = {
   methods: {
     init: function init() {
       var vm = this;
-      Vue.nextTick(function () {
-        setTimeout(function () {
-          vm.animateDraw();
-        }, vm.delay);
+
+      if (this.start) {
+        Vue.nextTick(function () {
+          setTimeout(function () {
+            vm.animateDraw();
+          }, vm.delay);
+        });
+      }
+
+      /**
+       * Animate All SVG
+       */
+      this.$parent.$on('animate', function () {
+        Vue.nextTick(function () {
+          setTimeout(function () {
+            vm.animateDraw();
+          }, vm.delay);
+        });
+      });
+
+      /**
+       * Animate single/target SVG
+       */
+      this.$on('animate', function () {
+        Vue.nextTick(function () {
+          setTimeout(function () {
+            vm.animateDraw();
+          }, vm.delay);
+        });
       });
     },
     animateDraw: function animateDraw() {
