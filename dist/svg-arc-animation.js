@@ -4,13 +4,13 @@
 */
 
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-if (typeof d3 === 'undefined') {
-  throw new Error('D3.js version 4 (v4) is required. Please include this https://d3js.org/d3.v4.min.js in your script tag. More info on D3, please visit https://d3js.org/');
+if (typeof d3 === "undefined") {
+  throw new Error("D3.js version 4 (v4) is required. Please include this https://d3js.org/d3.v4.min.js in your script tag. More info on D3, please visit https://d3js.org/");
 }
 
 var SvgArcAnimationComponent = {
@@ -18,72 +18,55 @@ var SvgArcAnimationComponent = {
   render: function render(h) {
     var vm = this;
     return h(
-      'svg',
+      "svg",
       {
-        attrs: { width: vm.boxSize, height: vm.boxSize, viewBox: '0 0 ' + vm.boxSize + ' ' + vm.boxSize },
+        attrs: {
+          width: vm.boxSize,
+          height: vm.boxSize,
+          viewBox: "0 0 " + vm.boxSize + " " + vm.boxSize
+        },
         on: {
-          'click': vm.restart
+          "click": vm.restart
         },
+
         style: {
-          cursor: 'pointer',
-          maxWidth: '100%'
-        } },
+          cursor: "pointer",
+          maxWidth: "100%"
+        }
+      },
       [h(
-        'foreignObject',
+        "text",
         {
-          attrs: { width: vm.boxSize, height: vm.boxSize }
+          attrs: {
+            "text-anchor": "middle",
+            "alignment-baseline": "middle",
+            fill: vm.color,
+            x: vm.boxSize / 2,
+            y: vm.boxSize / 2 + 15
+          },
+          style: {
+            color: vm.color,
+            fontSize: vm.boxSize / 12 * 0.2 + "em",
+            fontWeight: "bold"
+          }
         },
-        [h(
-          'div',
-          { 'class': 'svg_aa--txt-wrapper', style: {
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '100%',
-              height: '100%'
-            } },
-          [h(
-            'div',
-            { 'class': 'svg_aa--txt-content', style: {
-                color: vm.color,
-                fontSize: vm.boxSize / 12 * 0.2 + 'em',
-                fontWeight: 'bold'
-              } },
-            [vm.fgTxt, vm.textOffset]
-          )]
-        )]
+        [vm.fgTxt]
       ), h(
-        'g',
+        "g",
         {
-          attrs: { transform: 'translate(' + vm.boxSize / 2 + ',' + vm.boxSize / 2 + ')' }
+          attrs: { transform: "translate(" + vm.boxSize / 2 + "," + vm.boxSize / 2 + ")" }
         },
         [h(
-          'g',
-          { 'class': 'svg_aa--progress_meter' },
+          "g",
+          { "class": "svg_aa--progress_meter" },
           [h(
-            'path',
-            { 'class': 'svg_aa--bg',
-              attrs: { d: vm.bg,
-                'fill-opacity': '0',
-                stroke: vm.color,
-                'stroke-width': vm.bgBorder,
-                'stroke-opacity': '1',
-                'stroke-linecap': 'round',
-                'stroke-linejoin': 'round'
-              }
+            "path",
+            { "class": "svg_aa--bg", attrs: { d: vm.bg, "fill-opacity": "0", stroke: vm.color, "stroke-width": vm.bgBorder, "stroke-opacity": "1", "stroke-linecap": "round", "stroke-linejoin": "round" }
             },
             []
           ), h(
-            'path',
-            { 'class': 'svg_aa--fg', ref: vm.uniqueId + '-fg', attrs: { transform: vm.directionAnim,
-                d: vm.fg,
-                'fill-opacity': '0',
-                stroke: vm.color,
-                'stroke-width': vm.fgBorder,
-                'stroke-opacity': '0',
-                'stroke-linecap': 'round',
-                'stroke-linejoin': 'round'
-              }
+            "path",
+            { "class": "svg_aa--fg", ref: vm.uniqueId + "-fg", attrs: { transform: vm.directionAnim, d: vm.fg, "fill-opacity": "0", stroke: vm.color, "stroke-width": vm.fgBorder, "stroke-opacity": "0", "stroke-linecap": "round", "stroke-linejoin": "round" }
             },
             []
           )]
@@ -103,7 +86,7 @@ var SvgArcAnimationComponent = {
     },
     textOffset: {
       type: String,
-      default: ''
+      default: ""
     },
     size: {
       type: Number,
@@ -115,7 +98,7 @@ var SvgArcAnimationComponent = {
     },
     direction: {
       type: String,
-      default: 'ltr'
+      default: "ltr"
     },
     duration: {
       type: Number,
@@ -144,7 +127,7 @@ var SvgArcAnimationComponent = {
   },
   data: function data() {
     return {
-      shortName: 'svg-aa',
+      shortName: "svg-aa",
       twoPi: Math.PI * 2,
       easing: d3.easeBounce,
       fgTxt: 0
@@ -153,7 +136,7 @@ var SvgArcAnimationComponent = {
 
   computed: {
     uniqueId: function uniqueId() {
-      return this.shortName + '-' + this._uid;
+      return this.shortName + "-" + this._uid;
     },
     percentage: function percentage() {
       return this.value < 1 ? 0 : this.value / this.total * 100;
@@ -168,7 +151,7 @@ var SvgArcAnimationComponent = {
       return this.setArc({ endAngle: this.twoPi });
     },
     directionAnim: function directionAnim() {
-      return this.direction === 'ltr' ? 'rotate(180, 0, 0) scale(1,-1)' : 'rotate(0, 0, 0) scale(1, 1)';
+      return this.direction === "ltr" ? "rotate(180, 0, 0) scale(1,-1)" : "rotate(0, 0, 0) scale(1, 1)";
     }
   },
   methods: {
@@ -186,7 +169,7 @@ var SvgArcAnimationComponent = {
       /**
        * Animate All SVG
        */
-      this.$parent.$on('animate', function () {
+      this.$parent.$on("animate", function () {
         Vue.nextTick(function () {
           setTimeout(function () {
             vm.animateDraw();
@@ -197,7 +180,7 @@ var SvgArcAnimationComponent = {
       /**
        * Animate single/target SVG
        */
-      this.$on('animate', function () {
+      this.$on("animate", function () {
         Vue.nextTick(function () {
           setTimeout(function () {
             vm.animateDraw();
@@ -214,7 +197,7 @@ var SvgArcAnimationComponent = {
 
       if (vm.value < 1) return;
 
-      d3.select(vm.$refs[vm.uniqueId + '-fg']).attr('stroke-opacity', 1).transition().ease(vm.easing).duration(vm.duration).attrTween("d", function () {
+      d3.select(vm.$refs[vm.uniqueId + "-fg"]).attr("stroke-opacity", 1).transition().ease(vm.easing).duration(vm.duration).attrTween("d", function () {
         return vm.arcTween({ endAngle: 0 }, vm.percentage / 100);
       });
     },
@@ -245,7 +228,7 @@ var SvgArcAnimationComponent = {
     restart: function restart(event) {
       var vm = this;
       vm.fgTxt = 0;
-      d3.select(vm.$refs[vm.uniqueId + '-fg']).attr('stroke-opacity', 1).transition().duration(10).attrTween("d", function () {
+      d3.select(vm.$refs[vm.uniqueId + "-fg"]).attr("stroke-opacity", 1).transition().duration(10).attrTween("d", function () {
         return vm.arcTween({ endAngle: 0 }, 0.01);
       });
 
@@ -267,7 +250,7 @@ var SvgArcAnimation = {
   }
 };
 
-if (typeof window !== 'undefined' && window.Vue) {
+if (typeof window !== "undefined" && window.Vue) {
   window.Vue.use(SvgArcAnimation);
 }
 

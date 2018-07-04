@@ -4,11 +4,11 @@
   "description": "Animate SVG using d3.js",
   "main": "./src/svg-arc-animation.js",
   "scripts": {
-    "serve": "set NODE_ENV =development && grunt connect:server:keepalive",
-    "watch": "set NODE_ENV =development && grunt watch",
-    "build": "set NODE_ENV =production && grunt prod",
-    "dev": "set NODE_ENV =development && grunt dev",
-    "prod": "set NODE_ENV =production && grunt prod",
+    "serve": "set NODE_ENV=development && grunt connect:server:keepalive",
+    "watch": "set NODE_ENV=development && grunt watch",
+    "build": "set NODE_ENV=production && grunt prod",
+    "dev": "set NODE_ENV=development && grunt dev",
+    "prod": "set NODE_ENV=production && grunt prod",
     "clean": "find . -name '.DS_Store' -type f -delete"
   },
   "author": [
