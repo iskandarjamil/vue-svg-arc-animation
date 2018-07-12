@@ -1,6 +1,4 @@
-if (typeof d3 === "undefined") {
-  throw new Error("D3.js version 4 (v4) is required. Please include this https://d3js.org/d3.v4.min.js in your script tag. More info on D3, please visit https://d3js.org/");
-}
+import d3 from "./d3.js";
 
 var SvgArcAnimationComponent = {
   name: "svg-arc-animation",

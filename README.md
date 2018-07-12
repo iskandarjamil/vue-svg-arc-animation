@@ -30,8 +30,7 @@ $ bower install vue-svg-arc-animation --save
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="./assets/vue-svg-arc-animation/dist/svg-arc-animation.js"></script>
+  <script src="./assets/vue-svg-arc-animation/dist/svg-arc-animation.min.js"></script>
   <script>
     var app = new Vue({
       el : '#main',
@@ -48,7 +47,6 @@ or
 
   <script>
     import Vue from 'vue';
-    import * as d3 from "d3";
     import SvgArcAnimation from "vue-svg-arc-animation";
 
     Vue.use(SvgArcAnimation);
