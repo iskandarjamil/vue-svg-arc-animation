@@ -17,10 +17,9 @@ var SvgArcAnimationComponent = {
       >
         <text
           text-anchor="middle"
-          alignment-baseline="middle"
           fill={vm.color}
           x={vm.boxSize / 2}
-          y={vm.boxSize / 2 + 15}
+          y={vm.boxSize * 0.4 + ((vm.boxSize * 0.4) / 2)}
           style={{
             color: vm.color,
             fontSize: vm.boxSize / 12 * 0.2 + "em",

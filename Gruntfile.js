@@ -23,6 +23,7 @@ module.exports = function(grunt) {
     connect    : require('./grunt/connect.js'),
     jshint     : require('./grunt/jshint.js'),
     watch      : require('./grunt/watch.js'),
+    uglify     : require('./grunt/uglify.js'),
   });
 
 
@@ -33,6 +34,7 @@ module.exports = function(grunt) {
     'clean',
     'dev',
     'browserify:prod',
+    'uglify',
   ]);
 
 };

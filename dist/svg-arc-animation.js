@@ -1,5 +1,5 @@
 /*!
-* vue-svg-arc-animation v0.0.1
+* vue-svg-arc-animation v0.0.4
 * Copyright 2018 Iskandar Jamil <iskandar.jamil@vltkl.com>
 */
 
@@ -5550,10 +5550,9 @@ var SvgArcAnimationComponent = {
         {
           attrs: {
             "text-anchor": "middle",
-            "alignment-baseline": "middle",
             fill: vm.color,
             x: vm.boxSize / 2,
-            y: vm.boxSize / 2 + 15
+            y: vm.boxSize * 0.4 + vm.boxSize * 0.4 / 2
           },
           style: {
             color: vm.color,
