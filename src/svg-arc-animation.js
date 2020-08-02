@@ -12,18 +12,18 @@ var SvgArcAnimationComponent = {
         onClick={vm.restart}
         style={{
           cursor: "pointer",
-          maxWidth: "100%"
+          maxWidth: "100%",
         }}
       >
         <text
           text-anchor="middle"
           fill={vm.color}
           x={vm.boxSize / 2}
-          y={vm.boxSize * 0.4 + ((vm.boxSize * 0.4) / 2)}
+          y={vm.boxSize * 0.4 + (vm.boxSize * 0.4) / 2}
           style={{
             color: vm.color,
-            fontSize: vm.boxSize / 12 * 0.2 + "em",
-            fontWeight: "bold"
+            fontSize: (vm.boxSize / 12) * 0.2 + "em",
+            fontWeight: "bold",
           }}
         >
           {vm.fgTxt}
@@ -40,59 +40,59 @@ var SvgArcAnimationComponent = {
   props: {
     value: {
       type: Number,
-      default: 500
+      default: 500,
     },
     total: {
       type: Number,
-      default: 1000
+      default: 1000,
     },
     textOffset: {
       type: String,
-      default: ""
+      default: "",
     },
     size: {
       type: Number,
-      default: 75
+      default: 75,
     },
     padding: {
       type: Number,
-      default: 10
+      default: 10,
     },
     direction: {
       type: String,
-      default: "ltr"
+      default: "ltr",
     },
     duration: {
       type: Number,
-      default: 1200
+      default: 1200,
     },
     delay: {
       type: Number,
-      default: 0
+      default: 0,
     },
     color: {
       type: String,
-      default: "red"
+      default: "red",
     },
     bgBorder: {
       type: Number,
-      default: 2
+      default: 2,
     },
     fgBorder: {
       type: Number,
-      default: 8
+      default: 8,
     },
     start: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
       shortName: "svg-aa",
       twoPi: Math.PI * 2,
       easing: d3.easeBounce,
-      fgTxt: 0
+      fgTxt: 0,
     };
   },
   computed: {
@@ -100,7 +100,7 @@ var SvgArcAnimationComponent = {
       return this.shortName + "-" + this._uid;
     },
     percentage() {
-      return this.value < 1 ? 0 : this.value / this.total * 100;
+      return this.value < 1 ? 0 : (this.value / this.total) * 100;
     },
     boxSize() {
       return (this.size + this.padding) * 2;
@@ -113,7 +113,7 @@ var SvgArcAnimationComponent = {
     },
     directionAnim() {
       return this.direction === "ltr" ? "rotate(180, 0, 0) scale(1,-1)" : "rotate(0, 0, 0) scale(1, 1)";
-    }
+    },
   },
   methods: {
     init() {
@@ -158,24 +158,18 @@ var SvgArcAnimationComponent = {
 
       if (vm.value < 1) return;
 
-      d3
-        .select(vm.$refs[vm.uniqueId + "-fg"])
+      d3.select(vm.$refs[vm.uniqueId + "-fg"])
         .attr("stroke-opacity", 1)
         .transition()
         .ease(vm.easing)
         .duration(vm.duration)
-        .attrTween("d", function() {
+        .attrTween("d", function () {
           return vm.arcTween({ endAngle: 0 }, vm.percentage / 100);
         });
     },
     setArc(callback) {
       var vm = this;
-      var fn = d3
-        .arc()
-        .startAngle(0)
-        .innerRadius(vm.size)
-        .outerRadius(vm.size)
-        .cornerRadius(50);
+      var fn = d3.arc().startAngle(0).innerRadius(vm.size).outerRadius(vm.size).cornerRadius(50);
       return fn(callback);
     },
     arcTween(d, new_score) {
@@ -190,9 +184,9 @@ var SvgArcAnimationComponent = {
       interpolate_start = d3.interpolate(d.startAngle, new_startAngle);
       interpolate_end = d3.interpolate(d.endAngle, new_endAngle);
 
-      return function(t) {
+      return function (t) {
         d.endAngle = interpolate_end(t);
-        txtCalc = d.endAngle / new_endAngle * vm.value;
+        txtCalc = (d.endAngle / new_endAngle) * vm.value;
         vm.fgTxt = txtCalc < 1 ? 0 : txtCalc.toFixed(0);
         return vm.setArc(d);
       };
@@ -200,12 +194,11 @@ var SvgArcAnimationComponent = {
     restart(event) {
       var vm = this;
       vm.fgTxt = 0;
-      d3
-        .select(vm.$refs[vm.uniqueId + "-fg"])
+      d3.select(vm.$refs[vm.uniqueId + "-fg"])
         .attr("stroke-opacity", 1)
         .transition()
         .duration(10)
-        .attrTween("d", function() {
+        .attrTween("d", function () {
           return vm.arcTween({ endAngle: 0 }, 0.01);
         });
 
@@ -214,17 +207,17 @@ var SvgArcAnimationComponent = {
           vm.animateDraw();
         }, 10);
       });
-    }
+    },
   },
   mounted() {
     this.init();
-  }
+  },
 };
 
 const SvgArcAnimation = {
   install(Vue, options) {
     Vue.component(SvgArcAnimationComponent.name, SvgArcAnimationComponent);
-  }
+  },
 };
 
 if (typeof window !== "undefined" && window.Vue) {

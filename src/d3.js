@@ -5,9 +5,9 @@ import { interpolate } from "d3-interpolate";
 import { easeBounce } from "d3-ease";
 
 export default {
-	arc: arc,
-	select: select,
-	easeBounce: easeBounce,
-	transition: transition,
-	interpolate: interpolate,
+  arc,
+  select,
+  easeBounce,
+  transition,
+  interpolate,
 };
