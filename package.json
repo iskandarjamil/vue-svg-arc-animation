@@ -46,7 +46,7 @@
     "grunt-update": "^0.2.3",
     "jit-grunt": "^0.10.0",
     "jshint-stylish": "^2.2.1",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.8.5",
     "time-grunt": "^1.4.0",
     "uglifyify": "^5.0.2",
     "vue": "^2.6.11"
